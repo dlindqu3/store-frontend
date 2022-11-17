@@ -1,28 +1,23 @@
-import React, { useState } from "react"
-import axios from "axios"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import React from "react"
+import Checkout from "./pages/Checkout"
+import CheckoutSuccess from "./pages/CheckoutSuccess"
+import CheckoutCancel from "./pages/CheckoutCancel"
+import Home from "./pages/Home"
+
 
 function App() {
-
-  const handleCheckout = async () => {
-    let baseURL = 'http://localhost:4000'
-    let queryUrl = baseURL + "/create-checkout-session"
-    let reqBody = { items: [
-      { id: 1, quantity: 2 }, 
-      { id: 2, quantity: 3 }
-    ]}
-    // By default, if the 2nd parameter to axios.post() is an object, Axios serializes the object to JSON using the JSON.stringify() function.
-    // so, you can often omit the headers argument, if all you care about is the content type 
-    // axios.post(url, body, headers)
-    let newData = await axios.post(queryUrl, reqBody)
-    console.log('newData', newData) 
-    // if the request is successful, redirect the user 
-  }
-
-
+  
   return (
     <div className="App">
-      <p>Get Stripe Stuff</p>
-      <button onClick={handleCheckout}>Checkout</button>
+      <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Home />} exact />
+        <Route path="/checkout" element={<Checkout />} exact />
+        <Route path="/checkout/success" element={<CheckoutSuccess />} exact />
+        <Route path="/checkout/cancel" element={<CheckoutCancel />} exact />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
