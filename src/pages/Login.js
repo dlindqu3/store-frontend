@@ -26,11 +26,12 @@ function Login ({ setCurrentUser }) {
       // console.log('baseURL: ', baseURL)
       // console.log('reqBody: ', reqBody)
       const res = await axios.post(baseURL, reqBody)
-      // res.data is an object with keys of 'username' and 'token'
+      // res.data is an object with keys of 'username', 'email' and 'token'
+      console.log(res.data)
       localStorage.setItem("store-user", JSON.stringify(res.data))
-      setCurrentUser(res.data.username);
+      setCurrentUser(res.data.username)
       console.log('currentUser: ', res.data.username)
-      navigate("/");
+      navigate("/")
     } catch (error) {
       setSignupError(error.response.data.error)
       console.log(error)

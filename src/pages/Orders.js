@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Orders() {
+function Orders({ currentUser }) {
   return (
     <div>
       <h1>Orders Page</h1>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import axios from 'axios'
 
-function AllProducts() {
+function AllProducts({ currentUser }) {
 
   const [errorText, setErrorText] = useState()
   const [products, setProducts] = useState()

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios"
 
-function Checkout() {
+function Checkout({ currentUser }) {
 
   
   const handleCheckout = async () => {
