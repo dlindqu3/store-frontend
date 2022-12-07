@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 
-function Login ({ setCurrentUser, setCurrentToken }) {
+function Login ({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurrentUserId }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [signupError, setSignupError] = useState("")
@@ -26,11 +26,14 @@ function Login ({ setCurrentUser, setCurrentToken }) {
       // console.log('baseURL: ', baseURL)
       // console.log('reqBody: ', reqBody)
       const res = await axios.post(baseURL, reqBody)
-      // res.data is an object with keys of 'username', 'email' and 'token'
+      // res.data is an object with keys of 'username', 'email', "token" and 'token'
       console.log(res.data)
+      console.log(res.data.email)
       localStorage.setItem("store-user", JSON.stringify(res.data))
+      setCurrentUserEmail(res.data.email)
       setCurrentUser(res.data.username)
       setCurrentToken(res.data.token)
+      setCurrentUserId(res.data._id)
       // console.log('currentUser: ', res.data.username)
       // console.log('currentUser token: ', res.data.token)
       navigate("/")

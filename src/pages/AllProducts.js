@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import axios from 'axios'
 
-function AllProducts({ currentUser, currentToken }) {
+function AllProducts({ currentUser, currentToken, currentEmail, currentUserId }) {
 
   const [errorText, setErrorText] = useState()
   const [products, setProducts] = useState()
@@ -32,19 +32,19 @@ function AllProducts({ currentUser, currentToken }) {
   }, []);
 
 
+
   return (
     <div>
 
     { currentUser && console.log(currentUser, ' from AllProducts')}
-      
+    {currentEmail && console.log(currentEmail, ' from allProducts')}
       <h2>All Products</h2>
       
       {products && products.map((item) => {
-          return <ProductCard productData={item} key={item._id}/>
+          return <ProductCard productData={item} key={item._id} currentEmail={currentEmail}  currentUserId={currentUserId}  currentToken={currentToken} />
       })}
       {products && console.log(products)}
       {errorText && console.log('error text: ', errorText)}
-    
     </div>
   )
 }

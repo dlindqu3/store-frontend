@@ -19,6 +19,9 @@ function App() {
 
   // this is a username 
   const [currentUser, setCurrentUser] = useState()
+  // email is unique in db 
+  const [currentEmail, setCurrentUserEmail] = useState()
+  const [currentUserId, setCurrentUserId] = useState()
   const [currentToken, setCurrentToken] = useState()
 
   // useEffect: see if there is a "store-user" object already in local storage; run only on first render 
@@ -41,13 +44,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navbar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+      <Navbar setCurrentUser={setCurrentUser} currentUser={currentUser} />
       <Routes>
       <Route path="/" element={<Home />} exact />
         <Route path="/about" element={<About />} exact />
-        <Route path="/signup" element={<SignUp setCurrentToken={setCurrentToken} setCurrentUser={setCurrentUser}
+        <Route path="/signup" element={<SignUp setCurrentToken={setCurrentToken} setCurrentUser={setCurrentUser} setCurrentUserEmail={setCurrentUserEmail}
+        setCurrentUserId={setCurrentUserId}
         />} exact />
-        <Route path="/login" element={<Login setCurrentToken={setCurrentToken} setCurrentUser={setCurrentUser} />} exact />
+        <Route path="/login" element={<Login setCurrentToken={setCurrentToken} setCurrentUser={setCurrentUser} setCurrentUserEmail={setCurrentUserEmail}
+        setCurrentUserId={setCurrentUserId}
+        />} exact />
 
         <Route 
             path="/all-products"
@@ -55,6 +61,7 @@ function App() {
                       Component={AllProducts} 
                       currentUser={currentUser} 
                       currentToken={currentToken}
+                      currentUserId={currentUserId}
                     />}
         /> 
 
