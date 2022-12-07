@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 
-function Login ({ setCurrentUser }) {
+function Login ({ setCurrentUser, setCurrentToken }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [signupError, setSignupError] = useState("")
@@ -30,7 +30,9 @@ function Login ({ setCurrentUser }) {
       console.log(res.data)
       localStorage.setItem("store-user", JSON.stringify(res.data))
       setCurrentUser(res.data.username)
-      console.log('currentUser: ', res.data.username)
+      setCurrentToken(res.data.token)
+      // console.log('currentUser: ', res.data.username)
+      // console.log('currentUser token: ', res.data.token)
       navigate("/")
     } catch (error) {
       setSignupError(error.response.data.error)

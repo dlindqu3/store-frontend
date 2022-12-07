@@ -12,6 +12,7 @@ function Navbar({ currentUser, setCurrentUser }) {
 
   return (
     <header >
+      { currentUser && console.log(currentUser)}
       <div >
 
         <div >
