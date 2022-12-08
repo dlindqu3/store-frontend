@@ -21,7 +21,7 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
         headers: { Authorization: `Bearer ${currentToken}` }
     })
       let productsArray = resData.data.allProducts
-      console.log('productsArray: ', productsArray)
+      // console.log('productsArray: ', productsArray)
       setProducts(productsArray)
     } catch (err){
       console.log(err.message)
@@ -36,8 +36,8 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
   return (
     <div>
 
-    { currentUser && console.log(currentUser, ' from AllProducts')}
-    {currentEmail && console.log(currentEmail, ' from allProducts')}
+    {/* { currentUser && console.log(currentUser, ' currentUser from AllProducts')} */}
+    {/* {currentToken && console.log(currentToken, ' currentToken from allProducts')} */}
       <h2>All Products</h2>
       
       {products && products.map((item) => {
