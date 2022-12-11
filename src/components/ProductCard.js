@@ -92,11 +92,6 @@ function ProductCard({ productData, currentUserId, currentToken }) {
 
     }
 }
-
-  // from cart page: 
-  // let updateCart = ...
-  // let createNewCart = ...
-
   
 
   return (

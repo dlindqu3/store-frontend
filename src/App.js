@@ -71,6 +71,7 @@ function App() {
                       Component={Cart} 
                       currentUser={currentUser} 
                       currentToken={currentToken}
+                      currentUserId={currentUserId}
                     />}
         /> 
 
