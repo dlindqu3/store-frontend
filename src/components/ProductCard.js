@@ -97,7 +97,7 @@ function ProductCard({ productData, currentUserId, currentToken }) {
   return (
     <div>
       <p>{productData["name"]}</p>
-      <img src={productData.image} alt="bike" width="200" height="175" />
+      <img src={productData.image} alt={productData.name} width="200" height="175" />
       <button
         onClick={() => {
           handleAddToCart(productData);

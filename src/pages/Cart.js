@@ -27,13 +27,14 @@ function Cart({ currentToken, currentUserId }) {
     
   }, []);
 
+  // add a "clear cart" button 
 
   return (
     <div>
       <h2>Cart Page</h2>
       {!cart && <p>Your cart is empty.</p>}
       {cart && cart.cartItems.map((item) => {
-        return <CartCard key={item.product} productId={item.product} quantity={item.quantity}/> 
+        return <CartCard key={item.product} productId={item.product} quantity={item.quantity} currentToken={currentToken} currentUserId={currentUserId}/> 
       }) }
 
     </div>
