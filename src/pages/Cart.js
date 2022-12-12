@@ -51,20 +51,29 @@ function Cart({ currentToken, currentUserId }) {
   }, []);
 
   // add a "clear cart" button 
+  let clearCart = async () => {
+
+    let deleteCartUrl = "http://localhost:4000/" + "api/cart/delete-cart/" + cart._id;
+    let deletedCart = await axios.delete(deleteCartUrl, {
+      headers: { Authorization: `Bearer ${currentToken}` },
+    });
+    setCart(null)
+    console.log('deletedCart: ', deletedCart)
+  }
 
   return (
     <div>
       <h2>Cart Page</h2>
       {!cart && <p>Your cart is empty.</p>}
-
+      {cart && console.log('cart state: ', cart)}
       {cart && cart.cartItems.map((item) => {
         return <CartCard key={item.product} productId={item.product} quantity={item.quantity} currentToken={currentToken} currentUserId={currentUserId}
         totalCost={totalCost} setTotalCost={setTotalCost}
         /> 
       }) }
 
-      {/* FIX THIS */}
       {cart && <p>Total: ${totalCost / 100}.00</p>}
+      {cart && <button onClick={clearCart}>Delete cart</button>}
     </div>
   );
 }
