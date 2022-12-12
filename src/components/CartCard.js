@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import { toContainHTML } from '@testing-library/jest-dom/dist/matchers';
 
-function CartCard({ productId, quantity, currentToken }) {
+function CartCard({ productId, quantity, currentToken, totalCost, setTotalCost }) {
 
   const [productData, setProductData] = useState(); 
-  
 
 
   useEffect(() => {
@@ -17,6 +17,12 @@ function CartCard({ productId, quantity, currentToken }) {
       let newProductData = await axios.get(queryUrl, {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
+      console.log('newProductData.data: ', newProductData.data)
+
+      // let addedCost = newProductData.data.price * quantity
+      // console.log('addedCost / 100: ', addedCost / 100)
+      // console.log('totalCost: ', totalCost)
+      // setTotalCost(() => { return totalCost += addedCost})
       setProductData(newProductData.data)
     };
   
@@ -39,6 +45,7 @@ function CartCard({ productId, quantity, currentToken }) {
         }
       </>
       <br /> 
+
     </div>
   )
 }
