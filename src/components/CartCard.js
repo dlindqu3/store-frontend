@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { toContainHTML } from '@testing-library/jest-dom/dist/matchers';
 
-function CartCard({ productId, quantity, currentToken, totalCost, setTotalCost }) {
+function CartCard({ productId, quantity, currentToken }) {
 
   const [productData, setProductData] = useState(); 
 
@@ -19,10 +19,6 @@ function CartCard({ productId, quantity, currentToken, totalCost, setTotalCost }
       });
       console.log('newProductData.data: ', newProductData.data)
 
-      // let addedCost = newProductData.data.price * quantity
-      // console.log('addedCost / 100: ', addedCost / 100)
-      // console.log('totalCost: ', totalCost)
-      // setTotalCost(() => { return totalCost += addedCost})
       setProductData(newProductData.data)
     };
   

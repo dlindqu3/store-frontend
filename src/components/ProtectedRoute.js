@@ -1,10 +1,11 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
-function ProtectedRoute({ currentUser, currentToken, currentEmail, currentUserId, Component }) {
+function ProtectedRoute({ currentUser, currentToken, currentEmail, currentUserId, checkoutIncrement, setCheckoutIncrement, Component }) {
   return (
     <div>
-        { currentUser ? <Component currentUser={currentUser} currentToken={currentToken}  currentEmail={currentEmail}  currentUserId={currentUserId}/> : <Navigate to="/login" /> } 
+        { currentUser ? <Component currentUser={currentUser} currentToken={currentToken}  currentEmail={currentEmail}  currentUserId={currentUserId} checkoutIncrement={checkoutIncrement} setCheckoutIncrement={setCheckoutIncrement} />  : <Navigate to="/login" /> }
+        {currentUser ? console.log('there is a user') : console.log('there is NOT a user')} 
     </div>
   )
 }
