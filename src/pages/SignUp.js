@@ -15,7 +15,8 @@ function SignUp({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
   let navigate = useNavigate();
 
   const signup = async (username, email, password) => {
-    let baseURL = `http://localhost:4000/api/user/signup`
+    let baseURL = "https://store-backend-arv3.onrender.com/api/user/signup"
+    // let baseURL = `http://localhost:4000/api/user/signup`
 
 
     let reqBody = {

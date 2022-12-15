@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CartCard from "../components/CartCard";
 
-function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncrement }) {
+function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncrement, checkoutSessionId, setCheckoutSessionId }) {
   const [cart, setCart] = useState(); 
   const [totalCost, setTotalCost] = useState(0)
 
   let getCartTotalCost = async (cartItems) => {
     let cartTotalCost = 0
 
-    let baseURL = 'http://localhost:4000'
+    let baseURL = 'https://store-backend-arv3.onrender.com'
    
     for (let i = 0; i < cartItems.length; i++){
       let currentItem = cartItems[i]
@@ -31,7 +31,7 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
     let checkCartExists = async () => {
       
       let cartExistsUrl =
-        "http://localhost:4000/" + "api/cart/read-cart/" + currentUserId;
+        "https://store-backend-arv3.onrender.com/" + "api/cart/read-cart/" + currentUserId;
       
         let cartData = await axios.get(cartExistsUrl, {
         headers: { Authorization: `Bearer ${currentToken}` },
@@ -52,7 +52,7 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
   // add a "clear cart" button 
   let clearCart = async () => {
 
-    let deleteCartUrl = "http://localhost:4000/" + "api/cart/delete-cart/" + cart._id;
+    let deleteCartUrl = "https://store-backend-arv3.onrender.com/" + "api/cart/delete-cart/" + cart._id;
     let deletedCart = await axios.delete(deleteCartUrl, {
       headers: { Authorization: `Bearer ${currentToken}` },
     });
@@ -62,7 +62,7 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
 
   const handleCheckout = async () => {
 
-    let baseURL = 'http://localhost:4000'
+    let baseURL = 'https://store-backend-arv3.onrender.com'
     let queryUrl = baseURL + "/api/checkout/combo/handle-get-details-then-checkout"
 
     // items is an array of objects like {id: 5, quantity: 30}
@@ -81,8 +81,11 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
       headers: { Authorization: `Bearer ${currentToken}` },
     });
 
-    // console.log(checkoutData.data.url)
+    console.log("checkout url: ", checkoutData.data.url)
+    console.log("checkout sessionId: ", checkoutData.data.sessionId)
+  
     if (checkoutData.data.url){
+      setCheckoutSessionId(checkoutData.data.sessionId)
       setCheckoutIncrement(checkoutIncrement ++)
       window.location.href = checkoutData.data.url
     }

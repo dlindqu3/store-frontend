@@ -26,6 +26,7 @@ function App() {
   // checkoutIncrement will increment up by one after every checkout success or failure, ensuring that the useEffect callback is called each time
   // this solves a problem I had, in which useEffect was not firing after checkout, so the app did not know about the current user 
   const [checkoutIncrement, setCheckoutIncrement] = useState(0)
+  const [checkoutSessionId, setCheckoutSessionId] = useState()
 
 
   let checkUserData = () => {
@@ -37,7 +38,7 @@ function App() {
 
       // check to see if userData's token has expired
       let existingToken = userData2.token
-      // console.log('existingToken: ', existingToken)
+      console.log('existingToken: ', existingToken)
       var decoded = jwt_decode(existingToken);
       // console.log('decoded: ', decoded)
 
@@ -113,6 +114,8 @@ function App() {
                       currentUserId={currentUserId} 
                       checkoutIncrement={checkoutIncrement}
                       setCheckoutIncrement={setCheckoutIncrement}
+                      checkoutSessionId={checkoutSessionId}
+                      setCheckoutSessionId={setCheckoutSessionId}
                     />}
         /> 
         
@@ -125,16 +128,6 @@ function App() {
                       currentUserId={currentUserId}
                     />}
         /> 
-
-        {/* <Route 
-            path="/checkout/success"
-            element={<ProtectedRoute 
-                      Component={CheckoutSuccess} 
-                      currentUser={currentUser} 
-                      currentToken={currentToken}
-                      currentUserId={currentUserId}
-                    />}
-        />  */}
              
         <Route 
             path="/checkout/cancel"

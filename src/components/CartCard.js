@@ -11,8 +11,8 @@ function CartCard({ productId, quantity, currentToken }) {
 
     let getProductAndQuantity = async () => {
       
-      let baseURL = 'http://localhost:4000'
-      let queryUrl = baseURL + '/api/products/single/' + productId
+      let baseURL = 'https://store-backend-arv3.onrender.com/'
+      let queryUrl = baseURL + 'api/products/single/' + productId
       
       let newProductData = await axios.get(queryUrl, {
         headers: { Authorization: `Bearer ${currentToken}` },
