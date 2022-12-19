@@ -66,7 +66,7 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
     let queryUrl = baseURL + "/api/checkout/combo/handle-get-details-then-checkout"
 
     // items is an array of objects like {id: 5, quantity: 30}
-    let reqBody = { items: []}
+    let reqBody = { items: [], userId: currentUserId}
     for (let i = 0; i < cart.cartItems.length; i++){
       let currentCartItem = cart.cartItems[i]
       let newObj = {}
@@ -91,6 +91,9 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
     }
  
   }
+
+  // if the checkout succeeds, call the webhook 
+  
 
   return (
     <div>

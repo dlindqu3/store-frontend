@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import { toContainHTML } from '@testing-library/jest-dom/dist/matchers';
+
 
 function CartCard({ productId, quantity, currentToken }) {
 
@@ -11,6 +11,7 @@ function CartCard({ productId, quantity, currentToken }) {
 
     let getProductAndQuantity = async () => {
       
+      // let baseURL = 
       let baseURL = 'https://store-backend-arv3.onrender.com/'
       let queryUrl = baseURL + 'api/products/single/' + productId
       
