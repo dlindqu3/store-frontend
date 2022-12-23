@@ -110,6 +110,7 @@ function App() {
             element={<ProtectedRoute 
                       Component={Cart} 
                       currentUser={currentUser} 
+                      currentEmail={currentEmail}
                       currentToken={currentToken}
                       currentUserId={currentUserId} 
                       checkoutIncrement={checkoutIncrement}

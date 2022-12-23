@@ -11,7 +11,7 @@ function CartCard({ productId, quantity, currentToken }) {
 
     let getProductAndQuantity = async () => {
       
-      // let baseURL = 
+      // let baseURL = "http://localhost:4000/"
       let baseURL = 'https://store-backend-arv3.onrender.com/'
       let queryUrl = baseURL + 'api/products/single/' + productId
       

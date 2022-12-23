@@ -3,10 +3,13 @@ import axios from "axios";
 
 function ProductCard({ productData, currentUserId, currentToken }) {
 
+  let baseURL = "https://store-backend-arv3.onrender.com/"
+  // let baseURL = "http://localhost:4000/"
+
   let handleAddToCart = async (productData) => {
 
     // check if there is a cart for given user
-    let cartExistsUrl = "https://store-backend-arv3.onrender.com/" + "api/cart/read-cart/" + currentUserId;
+    let cartExistsUrl = baseURL + "api/cart/read-cart/" + currentUserId;
     let cartData = await axios.get(cartExistsUrl, {
       headers: { Authorization: `Bearer ${currentToken}` },
     });
@@ -17,7 +20,7 @@ function ProductCard({ productData, currentUserId, currentToken }) {
     if (!cartData.data[0]){
 
       console.log('there is no cart')
-      let createCartUrl = "https://store-backend-arv3.onrender.com/" + "api/cart/create-cart/";
+      let createCartUrl = baseURL + "api/cart/create-cart/";
       let createCartBody = {
         user: currentUserId,
         cartItems: [
@@ -56,7 +59,7 @@ function ProductCard({ productData, currentUserId, currentToken }) {
         cartData.data[0].cartItems[existingProductIdx].quantity += 1
 
           let cartId = cartData.data[0]._id
-          let updateCartUrl = "https://store-backend-arv3.onrender.com/" + "api/cart/update-cart/" + cartId
+          let updateCartUrl = baseURL + "api/cart/update-cart/" + cartId
          
           let updatedCartData = await axios.patch(updateCartUrl, cartData.data[0], {
             headers: { Authorization: `Bearer ${currentToken}` },

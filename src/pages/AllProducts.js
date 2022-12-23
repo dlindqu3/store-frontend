@@ -9,9 +9,9 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
 
   useEffect(() => {
     //Runs only on the first render
-
-    let baseURL = 'https://store-backend-arv3.onrender.com'
-    let queryUrl = baseURL + '/api/products/get-all-products'
+    // let baseURL = "http://localhost:4000/"
+    let baseURL = 'https://store-backend-arv3.onrender.com/'
+    let queryUrl = baseURL + 'api/products/get-all-products'
 
     let getProducts = async () => {
     try {
