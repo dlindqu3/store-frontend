@@ -29,6 +29,7 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
   return (
     <div>
       <h1>Orders Page</h1>
+      {!orders && <p>Your have not placed any orders.</p>}
       {orders && orders.map((order) => {
         return <OrderCard key={order._id} currentToken={currentToken} orderData={order}/>
       }) }

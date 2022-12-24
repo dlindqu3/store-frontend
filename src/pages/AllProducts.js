@@ -40,10 +40,11 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
     {/* {currentToken && console.log(currentToken, ' currentToken from allProducts')} */}
       <h2>All Products</h2>
       
+      <div style={{"display": "flex", "flexWrap": "wrap", "justifyContent": "space-around" }}>
       {products && products.map((item) => {
           return <ProductCard productData={item} key={item._id} currentEmail={currentEmail}  currentUserId={currentUserId}  currentToken={currentToken} />
       })}
-      {products && console.log(products)}
+      </div>
       {errorText && console.log('error text: ', errorText)}
     </div>
   )

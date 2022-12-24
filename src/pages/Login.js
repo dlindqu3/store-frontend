@@ -56,6 +56,7 @@ function Login ({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('login handleSubmit called')
     setIsLoading(true)
     setSignupError("");
     login(email, password)
