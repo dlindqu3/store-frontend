@@ -1,50 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function CartCard({ productId, quantity, currentToken }) {
-
-  const [productData, setProductData] = useState(); 
-
+  const [productData, setProductData] = useState();
 
   useEffect(() => {
-
     let getProductAndQuantity = async () => {
-      
       // let baseURL = "http://localhost:4000/"
-      let baseURL = 'https://store-backend-arv3.onrender.com/'
-      let queryUrl = baseURL + 'api/products/single/' + productId
-      
+      let baseURL = "https://store-backend-arv3.onrender.com/";
+      let queryUrl = baseURL + "api/products/single/" + productId;
+
       let newProductData = await axios.get(queryUrl, {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-      console.log('newProductData.data: ', newProductData.data)
+      console.log("newProductData.data: ", newProductData.data);
 
-      setProductData(newProductData.data)
+      setProductData(newProductData.data);
     };
-  
-    getProductAndQuantity()
-    
-  }, []);
 
+    getProductAndQuantity();
+  }, []);
 
   return (
     <div>
       <>
-        {
-          productData &&
+        {productData && (
           <>
-            <p>{productData.brand}: {productData.name}</p>
-            <img src={productData.image} alt={productData.name} width="200" height="175" />
-            <p>Unit price: ${productData.price / 100}.00</p>
-            <p>Quantity: {quantity}</p> 
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={productData.image} />
+              <Card.Body>
+                <Card.Title>{productData.brand}: {productData.name}</Card.Title>
+                <Card.Text>Unit price: ${productData.price / 100}.00</Card.Text>
+                <Card.Text>Quantity: {quantity}</Card.Text>
+              </Card.Body>
+            </Card>
           </>
-        }
+        )}
       </>
-      <br /> 
-
+      <br />
     </div>
-  )
+  );
 }
 
-export default CartCard
+export default CartCard;

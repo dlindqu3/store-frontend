@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CartCard from "../components/CartCard";
+import Button from "react-bootstrap/Button";
 
 function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncrement, checkoutSessionId, setCheckoutSessionId, currentEmail }) {
   const [cart, setCart] = useState(); 
@@ -103,14 +104,10 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
   
 
   return (
-    <div>
-      <h2>Cart Page</h2>
-
-      {console.log('currentUserId from Cart: ', currentUserId)}
-      {console.log('currentToken from Cart: ', currentToken)} 
+    <div style={{ marginTop: "5px", marginBottom: "5px" }}>
       
       {!cart && <p>Your cart is empty.</p>}
-      {cart && console.log('cart state: ', cart)}
+      {/* {cart && console.log('cart state: ', cart)} */}
       {cart && cart.cartItems.map((item) => {
         return <CartCard key={item.product} productId={item.product} quantity={item.quantity} currentToken={currentToken} currentUserId={currentUserId}
         totalCost={totalCost} setTotalCost={setTotalCost}
@@ -118,9 +115,10 @@ function Cart({ currentToken, currentUserId, checkoutIncrement, setCheckoutIncre
       }) }
 
       {cart && <p>Total: ${totalCost / 100}.00</p>}
-      {cart && <button onClick={clearCart}>Delete cart</button>}
-      <br /> 
-      <button onClick={handleCheckout}>Checkout</button>
+      <div style={{ "display": "flex",  "flexWrap": "wrap" }}>
+      {cart && <Button onClick={clearCart} style={{ marginRight: "1px" }}>Delete cart</Button>}
+      {cart && <Button onClick={handleCheckout} style={{ marginLeft: "1px" }}>Checkout</Button>}
+      </div>
     </div>
   );
 }

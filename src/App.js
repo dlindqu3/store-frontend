@@ -12,7 +12,6 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import About from "./pages/About";
 import Container from "react-bootstrap/Container";
 
 function App() {
@@ -78,102 +77,103 @@ function App() {
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}
         />
-        <Container>
-          <Routes>
-            <Route path="/" element={<Home />} exact />
-            <Route path="/about" element={<About />} exact />
-            <Route
-              path="/signup"
-              element={
-                <SignUp
-                  setCurrentToken={setCurrentToken}
-                  setCurrentUser={setCurrentUser}
-                  setCurrentUserEmail={setCurrentUserEmail}
-                  setCurrentUserId={setCurrentUserId}
-                />
-              }
-              exact
-            />
-            <Route
-              path="/login"
-              element={
-                <Login
-                  setCurrentToken={setCurrentToken}
-                  setCurrentUser={setCurrentUser}
-                  setCurrentUserEmail={setCurrentUserEmail}
-                  setCurrentUserId={setCurrentUserId}
-                />
-              }
-              exact
-            />
+        <div style={{ "minHeight": "100vh" }}>
+        <Container style={{ }} >
+            <Routes>
+              <Route path="/" element={<Home />} exact />
+              <Route
+                path="/signup"
+                element={
+                  <SignUp
+                    setCurrentToken={setCurrentToken}
+                    setCurrentUser={setCurrentUser}
+                    setCurrentUserEmail={setCurrentUserEmail}
+                    setCurrentUserId={setCurrentUserId}
+                  />
+                }
+                exact
+              />
+              <Route
+                path="/login"
+                element={
+                  <Login
+                    setCurrentToken={setCurrentToken}
+                    setCurrentUser={setCurrentUser}
+                    setCurrentUserEmail={setCurrentUserEmail}
+                    setCurrentUserId={setCurrentUserId}
+                  />
+                }
+                exact
+              />
 
-            <Route
-              path="/all-products"
-              element={
-                <ProtectedRoute
-                  Component={AllProducts}
-                  currentUser={currentUser}
-                  currentToken={currentToken}
-                  currentUserId={currentUserId}
-                />
-              }
-              exact
-            />
+              <Route
+                path="/all-products"
+                element={
+                  <ProtectedRoute
+                    Component={AllProducts}
+                    currentUser={currentUser}
+                    currentToken={currentToken}
+                    currentUserId={currentUserId}
+                  />
+                }
+                exact
+              />
 
-            <Route
-              path="/cart"
-              element={
-                <ProtectedRoute
-                  Component={Cart}
-                  currentUser={currentUser}
-                  currentEmail={currentEmail}
-                  currentToken={currentToken}
-                  currentUserId={currentUserId}
-                  checkoutIncrement={checkoutIncrement}
-                  setCheckoutIncrement={setCheckoutIncrement}
-                  checkoutSessionId={checkoutSessionId}
-                  setCheckoutSessionId={setCheckoutSessionId}
-                />
-              }
-            />
+              <Route
+                path="/cart"
+                element={
+                  <ProtectedRoute
+                    Component={Cart}
+                    currentUser={currentUser}
+                    currentEmail={currentEmail}
+                    currentToken={currentToken}
+                    currentUserId={currentUserId}
+                    checkoutIncrement={checkoutIncrement}
+                    setCheckoutIncrement={setCheckoutIncrement}
+                    checkoutSessionId={checkoutSessionId}
+                    setCheckoutSessionId={setCheckoutSessionId}
+                  />
+                }
+              />
 
-            <Route
-              path="/checkout/success"
-              element={
-                <ProtectedRoute
-                  Component={CheckoutSuccess}
-                  currentUser={currentUser}
-                  currentToken={currentToken}
-                  currentUserId={currentUserId}
-                />
-              }
-            />
+              <Route
+                path="/checkout/success"
+                element={
+                  <ProtectedRoute
+                    Component={CheckoutSuccess}
+                    currentUser={currentUser}
+                    currentToken={currentToken}
+                    currentUserId={currentUserId}
+                  />
+                }
+              />
 
-            <Route
-              path="/checkout/cancel"
-              element={
-                <ProtectedRoute
-                  Component={CheckoutCancel}
-                  currentUser={currentUser}
-                  currentToken={currentToken}
-                  currentUserId={currentUserId}
-                />
-              }
-            />
+              <Route
+                path="/checkout/cancel"
+                element={
+                  <ProtectedRoute
+                    Component={CheckoutCancel}
+                    currentUser={currentUser}
+                    currentToken={currentToken}
+                    currentUserId={currentUserId}
+                  />
+                }
+              />
 
-            <Route
-              path="/orders"
-              element={
-                <ProtectedRoute
-                  Component={Orders}
-                  currentUser={currentUser}
-                  currentToken={currentToken}
-                  currentUserId={currentUserId}
-                />
-              }
-            />
-          </Routes>
+              <Route
+                path="/orders"
+                element={
+                  <ProtectedRoute
+                    Component={Orders}
+                    currentUser={currentUser}
+                    currentToken={currentToken}
+                    currentUserId={currentUserId}
+                  />
+                }
+              />
+            </Routes>
         </Container>
+        </div>
         <FooterComponent />
       </BrowserRouter>
     </div>
