@@ -1,10 +1,14 @@
+## overview 
+- This site was developed as a portfolio project by Dwight Lindquist. Visitors can create user accounts then browse for various fake products. They can then add products to a cart, proceed to a checkout handled by Stripe, then see records of past orders from their account. The user is advised to use the credit card number "4242 4242 4242 4242" in order to successfully proceed with a fake payment via Stripe. The tech stack includes MongoDB, Express, React, Node, JWT, and React-Bootstrap. 
 
-## example problem & solution
-- I wanted to persist user logged-in state after redirect once a Stripe Checkout session ended. 
-- This would require me to check local storage for user data BEFORE any components render 
-- I originally thought that I could use useEffect to get user data from local storage before any components render 
-- However, per React useEffect documentation, " By using this Hook, you tell React that your component needs to do something after render" [link](https://reactjs.org/docs/hooks-effect.html)
-- Instead, I needed to use useMemo, which runs when one of its dependencies has changed and before render [link](https://stackoverflow.com/questions/63711013/how-to-trigger-useeffects-before-render-in-react)
+
+## deployed frontend on Vercel 
+- 
+
+
+## backend repository on GitHub 
+- https://github.com/dlindqu3/store-backend
+
 
 ## citations 
 1. "POST Requests with Axios", [link](https://masteringjs.io/tutorials/axios/post)

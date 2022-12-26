@@ -38,9 +38,9 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
 
     {/* { currentUser && console.log(currentUser, ' currentUser from AllProducts')} */}
     {/* {currentToken && console.log(currentToken, ' currentToken from allProducts')} */}
-      <h2>All Products</h2>
+      <h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>All Products</h2>
       
-      <div style={{"display": "flex", "flexWrap": "wrap", "justifyContent": "space-around" }}>
+      <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>
       {products && products.map((item) => {
           return <ProductCard productData={item} key={item._id} currentEmail={currentEmail}  currentUserId={currentUserId}  currentToken={currentToken} />
       })}

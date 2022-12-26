@@ -24,11 +24,10 @@ function CartCard({ productId, quantity, currentToken }) {
   }, []);
 
   return (
-    <div>
-      <>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
         {productData && (
           <>
-            <Card style={{ width: "18rem" }}>
+            <Card style={{ minWidth: "18rem", width: "35rem", marginBottom: "10px", marginTop: "10px" }}>
               <Card.Img variant="top" src={productData.image} />
               <Card.Body>
                 <Card.Title>{productData.brand}: {productData.name}</Card.Title>
@@ -38,8 +37,6 @@ function CartCard({ productId, quantity, currentToken }) {
             </Card>
           </>
         )}
-      </>
-      <br />
     </div>
   );
 }

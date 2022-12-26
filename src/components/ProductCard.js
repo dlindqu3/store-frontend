@@ -104,8 +104,8 @@ function ProductCard({ productData, currentUserId, currentToken }) {
   };
 
   return (
-    <div>
-      <Card style={{ "width": "18rem", "marginBottom": "2rem" }}>
+    <div style={{ }}>
+      <Card style={{ minWidth: "18rem", width: "35rem", marginBottom: "10px", marginTop: "10px" }}>
         <Card.Img variant="top" src={productData.image}/>
         <Card.Body>
           <Card.Title>{productData.brand}: {productData.name}</Card.Title>
