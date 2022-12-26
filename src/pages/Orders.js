@@ -37,7 +37,6 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
 
   return (
     <>
-      {/* {orders && orders[0] && console.log('orders: ', orders)} */}
       {<h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>Your Orders</h2>}
       <Table striped bordered hover>
       <thead>
