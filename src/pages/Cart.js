@@ -71,6 +71,7 @@ function Cart({
 
     // items is an array of objects like {id: 5, quantity: 30}
     let reqBody = { items: [], userId: currentUserId, userEmail: currentEmail };
+    
     for (let i = 0; i < cart.cartItems.length; i++) {
       let currentCartItem = cart.cartItems[i];
       let newObj = {};
