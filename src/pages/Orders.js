@@ -6,8 +6,8 @@ import Button from "react-bootstrap/Button";
 
 function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
   
-  const [orders, setOrders] = useState()
-  const [productsQuants, setProductsQuants] = useState()
+  const [ordersAndDetails, setOrdersAndDetails] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
 
   let baseURL = "https://store-backend-arv3.onrender.com/";
@@ -15,15 +15,50 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
   let productUrlBase = baseURL + "api/products/single/"
 
   useEffect(() => {
+
+    let ordersWithDetails = []
+
     let getOrders = async () => {
       let resData = await axios.get(queryUrl, {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
 
-      setOrders(resData.data);
+      if (resData.data.length === 0){
+        setOrdersAndDetails([])
+      }
+
+      if (resData.data.length > 0){
+        for (let i = 0; i < resData.data.length; i++){ 
+          let currentOrder = resData.data[i]
+          // console.log('currentOrder: ', currentOrder)
+          let currentObj = {}
+          currentObj["createdAt"] = currentOrder.createdAt.split("T")[0]
+          currentObj["productsAndQuantities"] = []
+          currentObj["totalCost"] = currentOrder.totalCost
+
+          let currentOrderItems = currentOrder.orderItems
+          // console.log('currentOrder: ', currentOrder)
+          for (let j = 0; j < currentOrderItems.length; j++){
+            let currentItem = currentOrderItems[j]
+          
+            let queryUrl = productUrlBase + currentItem.product
+            let newProductData = await axios.get(queryUrl, {
+              headers: { Authorization: `Bearer ${currentToken}` },
+            });
+            newProductData.data["quantity"] = currentItem.quantity
+            currentObj["productsAndQuantities"].push(newProductData.data)
+          }
+          ordersWithDetails.push(currentObj)
+        }
+        console.log('ordersWithDetails: ', ordersWithDetails)
+      }
+
+      setOrdersAndDetails(ordersWithDetails);
     }
-      
-  getOrders();
+  
+  // setIsLoading(true)
+  getOrders()
+  // setIsLoading(false)
   }, []);
 
   let handleViewProducts = (orderItems) => {
@@ -61,29 +96,11 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
 
   return (
     <>
-      {<h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>Your Orders</h2>}
-      <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Date</th>
-          <th>Products</th>
-          <th>Total Cost</th>
-        </tr>
-      </thead>
+      <h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>Orders</h2>
 
-      <tbody>
-      { orders && orders.map((item) => {
-          return <tr key={item._id}>
-                <td>{orders.indexOf(item) + 1}</td>
-                <td>{item.createdAt.split("T")[0]}</td>
-                <td>Order id: {item._id}</td>
-                <td>Total cost: ${item.totalCost / 100}.00</td>
-          </tr> 
-        })}
-      </tbody>
-    </Table>
-    {productsQuants && <p>{productsQuants[productsQuants.length - 1].productId}</p>}
+      {/* {isLoading ? <p>Loading...</p> : <p></p>} */}
+     
+      
     </>
   );
 }
