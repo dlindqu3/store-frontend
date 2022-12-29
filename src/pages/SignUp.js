@@ -58,7 +58,7 @@ function SignUp({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
     e.preventDefault();
     setIsLoading(true)
     setSignupError("");
-    signup(username, email, password)
+    let signupDone = await signup(username, email, password)
     setIsLoading(false)
   };
 
@@ -114,6 +114,7 @@ function SignUp({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
             <div >
               {signupError ? <p>**{signupError}</p> : <p></p>}
               {isLoading ? <p>Loading...</p> : <p></p>}
+              {/* {!isLoading && console.log('not loading')} */}
               {/* {isLoading && console.log('loading')} */}
               <p>Note: the password must contain at least one capital letter, one lowercase letter, one special character, and a number. It must also be at least 8 characters long.</p>
             </div>

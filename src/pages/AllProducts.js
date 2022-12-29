@@ -29,7 +29,6 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
       // console.log(err.message)
     }
     }  
-    setIsLoading(true)
     getProducts()
     setIsLoading(false)
   }, []);

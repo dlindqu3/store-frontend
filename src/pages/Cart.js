@@ -15,7 +15,7 @@ function Cart({
   const [cart, setCart] = useState();
   const [totalCost, setTotalCost] = useState(0);
   const [errorText, setErrorText] = useState()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   let baseURL = "https://store-backend-arv3.onrender.com/";
   // let baseURL = "http://localhost:4000/"
@@ -54,8 +54,7 @@ function Cart({
         setCart(cartData.data[0]);
       }
     };
-    setIsLoading(true)
-    checkCartExists();
+    checkCartExists()
     setIsLoading(false)
   }, []);
 

@@ -56,7 +56,6 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
       setOrdersAndDetails(ordersWithDetails);
     }
   
-  setIsLoading(true)
   getOrders()
   setIsLoading(false)
   }, []);
