@@ -6,6 +6,7 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
 
   const [errorText, setErrorText] = useState()
   const [products, setProducts] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     //Runs only on the first render
@@ -24,11 +25,13 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
       // console.log('productsArray: ', productsArray)
       setProducts(productsArray)
     } catch (err){
-      console.log(err.message)
+      setErrorText(err.message)
+      // console.log(err.message)
     }
     }  
+    setIsLoading(true)
     getProducts()
-
+    setIsLoading(false)
   }, []);
 
 
@@ -39,7 +42,8 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
     {/* { currentUser && console.log(currentUser, ' currentUser from AllProducts')} */}
     {/* {currentToken && console.log(currentToken, ' currentToken from allProducts')} */}
       <h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>All Products</h2>
-      
+
+      {isLoading && <p>Loading...</p>}
       <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>
       {products && products.map((item) => {
           return <ProductCard productData={item} key={item._id} currentEmail={currentEmail}  currentUserId={currentUserId}  currentToken={currentToken} />

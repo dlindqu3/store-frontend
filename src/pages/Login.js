@@ -28,8 +28,8 @@ function Login ({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
       // console.log('reqBody: ', reqBody)
       const res = await axios.post(baseURL, reqBody)
       // res.data is an object with keys of 'username', 'email', "token" and 'token'
-      console.log(res.data)
-      console.log(res.data.email)
+      // console.log(res.data)
+      // console.log(res.data.email)
       localStorage.setItem("store-user", JSON.stringify(res.data))
       setCurrentUserEmail(res.data.email)
       setCurrentUser(res.data.username)
@@ -40,7 +40,7 @@ function Login ({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
       navigate("/")
     } catch (error) {
       setSignupError(error.response.data.error)
-      console.log(error)
+      // console.log(error)
     }
   };
 
@@ -56,7 +56,7 @@ function Login ({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('login handleSubmit called')
+    // console.log('login handleSubmit called')
     setIsLoading(true)
     setSignupError("");
     login(email, password)

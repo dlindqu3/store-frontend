@@ -50,7 +50,7 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
           }
           ordersWithDetails.push(currentObj)
         }
-        console.log('ordersWithDetails: ', ordersWithDetails)
+        // console.log('ordersWithDetails: ', ordersWithDetails)
       }
 
       setOrdersAndDetails(ordersWithDetails);
@@ -61,46 +61,15 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
   setIsLoading(false)
   }, []);
 
-  let handleViewProducts = (orderItems) => {
-    for (let i = 0; i < orderItems.length; i++){
-      console.log(orderItems[i])
-    }
-  }
-
-  let handleGetDetails = async (order) =>{
-
-    // setProductsQuants(null)
-    // let productsAndQuants = []
-    
-    // for (let i = 0; i < order.orderItems.length; i++){
-    //   let obj = {}
-    //   let currentItem = order.orderItems[i]
-    //   obj["productId"] = currentItem.product
-    //   obj["quantity"] = currentItem.quantity
-    //   productsAndQuants.push(obj)
-    // }
-    
-    // for (let i = 0; i < productsAndQuants.length; i++){
-    //   let currentItem = productsAndQuants[i]
-    //   let currentId = currentItem.productId
-    //   let productUrl = productUrlBase + currentId
-    //   let newProductData = await axios.get(productUrl, {
-    //     headers: { Authorization: `Bearer ${currentToken}` },
-    //   });
-    //   currentItem["details"] = newProductData.data
-    // }
-    // console.log('productsAndQuants: ', productsAndQuants)
-    // setProductsQuants(productsAndQuants)
-  }
-
 
   return (
     <>
       <h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>Orders</h2>
 
       {isLoading && <p>Loading...</p>}
-     
-      <Table striped bordered hover>
+
+      {ordersAndDetails && ordersAndDetails.length === 0 && <p>You have not placed any orders.</p>}
+      {ordersAndDetails && ordersAndDetails.length > 0 && <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
@@ -121,8 +90,8 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
           </tr>
         })}
       </tbody>
-    </Table>
-      
+    </Table>}
+    
     </>
   );
 }

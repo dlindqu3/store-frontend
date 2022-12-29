@@ -3,7 +3,7 @@
 
 
 ## deployed frontend on Vercel 
-- 
+- https://store-frontend-topaz.vercel.app
 
 
 ## backend repository on GitHub 

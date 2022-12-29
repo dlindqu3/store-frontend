@@ -15,7 +15,7 @@ function CartCard({ productId, quantity, currentToken }) {
       let newProductData = await axios.get(queryUrl, {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-      console.log("newProductData.data: ", newProductData.data);
+      // console.log("newProductData.data: ", newProductData.data);
 
       setProductData(newProductData.data);
     };

@@ -14,6 +14,8 @@ function Cart({
 }) {
   const [cart, setCart] = useState();
   const [totalCost, setTotalCost] = useState(0);
+  const [errorText, setErrorText] = useState()
+  const [isLoading, setIsLoading] = useState(false)
 
   let baseURL = "https://store-backend-arv3.onrender.com/";
   // let baseURL = "http://localhost:4000/"
@@ -44,7 +46,7 @@ function Cart({
         headers: { Authorization: `Bearer ${currentToken}` },
       });
       if (cartData.data[0]) {
-        console.log("cartData.data: ", cartData.data);
+        // console.log("cartData.data: ", cartData.data);
 
         // this sets cart total cost
         getCartTotalCost(cartData.data[0].cartItems);
@@ -52,7 +54,9 @@ function Cart({
         setCart(cartData.data[0]);
       }
     };
+    setIsLoading(true)
     checkCartExists();
+    setIsLoading(false)
   }, []);
 
   // add a "clear cart" button
@@ -62,7 +66,7 @@ function Cart({
       headers: { Authorization: `Bearer ${currentToken}` },
     });
     setCart(null);
-    console.log("deletedCart: ", deletedCart);
+    // console.log("deletedCart: ", deletedCart);
   };
 
   const handleCheckout = async () => {
@@ -88,9 +92,9 @@ function Cart({
         headers: { Authorization: `Bearer ${currentToken}` },
       });
       // checkoutData.data includes an object with {url, sesssionId}
-      console.log("checkoutData.data: ", checkoutData.data);
+      // console.log("checkoutData.data: ", checkoutData.data);
     } catch (err) {
-      console.log("error: ", err.message);
+      setErrorText(err.message)
     }
 
     if (checkoutData.data.url) {
@@ -109,6 +113,7 @@ function Cart({
   return (
     <div style={{ marginTop: "5px", marginBottom: "5px" }}>
       {!cart && <p>Your cart is empty.</p>}
+      {isLoading && <p>Loading...</p>}
       { cart &&    <h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>Your cart</h2> }
       {/* {cart && console.log('cart state: ', cart)} */}
       {cart &&

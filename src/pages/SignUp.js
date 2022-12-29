@@ -113,7 +113,8 @@ function SignUp({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
 
             <div >
               {signupError ? <p>**{signupError}</p> : <p></p>}
-              {isLoading && <p>Loading...</p>}
+              {isLoading ? <p>Loading...</p> : <p></p>}
+              {/* {isLoading && console.log('loading')} */}
               <p>Note: the password must contain at least one capital letter, one lowercase letter, one special character, and a number. It must also be at least 8 characters long.</p>
             </div>
 

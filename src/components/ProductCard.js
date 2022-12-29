@@ -16,11 +16,11 @@ function ProductCard({ productData, currentUserId, currentToken }) {
       headers: { Authorization: `Bearer ${currentToken}` },
     });
 
-    console.log("productData: ", productData);
-    console.log("cartData: ", cartData);
+    // console.log("productData: ", productData);
+    // console.log("cartData: ", cartData);
 
     if (!cartData.data[0]) {
-      console.log("there is no cart");
+      // console.log("there is no cart");
       let createCartUrl = baseURL + "api/cart/create-cart/";
       let createCartBody = {
         user: currentUserId,
@@ -34,10 +34,10 @@ function ProductCard({ productData, currentUserId, currentToken }) {
       let createdCart = await axios.post(createCartUrl, createCartBody, {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-      console.log("createdCart: ", createdCart);
+      // console.log("createdCart: ", createdCart);
     } else if (cartData.data[0]) {
-      console.log("there is a cart");
-      console.log("cartItems: ", cartData.data[0].cartItems);
+      // console.log("there is a cart");
+      // console.log("cartItems: ", cartData.data[0].cartItems);
 
       let currentProductInCart = false;
       let existingProductIdx;
@@ -48,7 +48,7 @@ function ProductCard({ productData, currentUserId, currentToken }) {
         if (hasProduct) {
           currentProductInCart = true;
           existingProductIdx = i;
-          console.log("currentObj with product that is in cart: ", currentObj);
+          // console.log("currentObj with product that is in cart: ", currentObj);
         }
       }
       // console.log('currentProductInCart: ', currentProductInCart)
@@ -68,12 +68,12 @@ function ProductCard({ productData, currentUserId, currentToken }) {
           }
         );
 
-        console.log("updatedCartData: ", updatedCartData);
+        // console.log("updatedCartData: ", updatedCartData);
       }
 
       // if current product is not in cart, add it to cart with quantity of 1
       if (!currentProductInCart) {
-        console.log("cart exists, but clicked product not in cart");
+        // console.log("cart exists, but clicked product not in cart");
 
         let newItem = {
           product: productData._id,
@@ -95,10 +95,10 @@ function ProductCard({ productData, currentUserId, currentToken }) {
           }
         );
 
-        console.log(
-          "updated cart Data after new item added: ",
-          updatedCartData
-        );
+        // console.log(
+        //   "updated cart Data after new item added: ",
+        //   updatedCartData
+        // );
       }
     }
   };
