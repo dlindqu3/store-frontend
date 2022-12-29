@@ -54,6 +54,7 @@ function Cart({
         setCart(cartData.data[0]);
       }
     };
+    setCart(null)
     checkCartExists()
     setIsLoading(false)
   }, []);
