@@ -56,9 +56,9 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
       setOrdersAndDetails(ordersWithDetails);
     }
   
-  // setIsLoading(true)
+  setIsLoading(true)
   getOrders()
-  // setIsLoading(false)
+  setIsLoading(false)
   }, []);
 
   let handleViewProducts = (orderItems) => {
@@ -98,8 +98,30 @@ function Orders({ currentUser, currentToken, currentEmail, currentUserId }) {
     <>
       <h2 style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'center' }}>Orders</h2>
 
-      {/* {isLoading ? <p>Loading...</p> : <p></p>} */}
+      {isLoading && <p>Loading...</p>}
      
+      <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>Products</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {ordersAndDetails && ordersAndDetails.map((order, index) => {
+          return <tr key={index}>
+            <td>{ordersAndDetails.indexOf(order) + 1}</td>
+            <td>{order.createdAt}</td>
+            <td>{order.productsAndQuantities.map((product) => {
+              return <p key={product._id}>{product.name} (${product.price / 100}.00) x{product.quantity}</p>
+            })}</td>
+            <td>${order.totalCost / 100}.00</td>
+          </tr>
+        })}
+      </tbody>
+    </Table>
       
     </>
   );
