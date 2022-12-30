@@ -17,7 +17,7 @@ function NavbarComponent({ currentUser, setCurrentUser }) {
   return (
     <Navbar expand="lg" style={{ backgroundColor: "WhiteSmoke" }}>
       <Container>
-        <Navbar.Brand href="#home">StoreName</Navbar.Brand>
+        <Navbar.Brand href="#home">SwiftStore</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
