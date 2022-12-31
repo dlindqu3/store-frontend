@@ -48,7 +48,7 @@ function AllProducts({ currentUser, currentToken, currentEmail, currentUserId })
           return <ProductCard productData={item} key={item._id} currentEmail={currentEmail}  currentUserId={currentUserId}  currentToken={currentToken} />
       })}
       </div>
-      {errorText && console.log('error text: ', errorText)}
+      {/* {errorText && console.log('error text: ', errorText)} */}
     </div>
   )
 }

@@ -13,7 +13,7 @@ function ProductCard({ productData, currentUserId, currentToken }) {
     // check if there is a cart for given user
     let cartExistsUrl = baseURL + "api/cart/read-cart/" + currentUserId;
 
-    console.log('currentUserId: ', currentUserId)
+    // console.log('currentUserId: ', currentUserId)
 
     let cartData = await axios.get(cartExistsUrl, {
       headers: { Authorization: `Bearer ${currentToken}` },

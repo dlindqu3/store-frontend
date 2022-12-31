@@ -40,7 +40,7 @@ function SignUp({ setCurrentUser, setCurrentToken, setCurrentUserEmail, setCurre
       navigate("/");
     } catch (error) {
       setSignupError(error.response.data.error)
-      console.log(error)
+      // console.log(error)
     }
   };
 
