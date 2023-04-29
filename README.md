@@ -1,13 +1,10 @@
 ## overview 
-- This site was developed as a portfolio project by Dwight Lindquist. Visitors can create user accounts then browse for various fake products. They can then add products to a cart, proceed to a checkout handled by Stripe, then see records of past orders from their account. The user is advised to use the credit card number "4242 4242 4242 4242" in order to successfully proceed with a fake payment via Stripe. The tech stack includes MongoDB, Express, React, Node, JWT, and React-Bootstrap. 
-
-
-## deployed frontend on Vercel 
-- https://swift-store-frontend-topaz.vercel.app
+- This site was developed as a portfolio project by Dwight Lindquist. The site is a replication of another e-commerce app built by Dwight. The original app was built with the MERN stack, while this iteration is built with React + Laravel.
+- Visitors can create user accounts then browse for various fake products. They can then add products to a cart, proceed to a checkout handled by Stripe, then see records of past orders from their account. The user is advised to use the credit card number "4242 4242 4242 4242" in order to successfully proceed with a fake payment via Stripe. The tech stack includes Laravel, SQL, and React. 
 
 
 ## backend repository on GitHub 
-- https://github.com/dlindqu3/store-backend
+- https://github.com/dlindqu3/store2-backend
 
 
 ## citations 
