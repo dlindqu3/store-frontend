@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from 'axios';
 import "./home.css"
 
 function Home() {
+
+  useEffect(() => {
+    //Runs only on the first render
+    let baseURL = 'https://store-backend-arv3.onrender.com/'
+    let wakeUpServer = async () => {
+      let res;
+      try {
+        res = await axios.get(baseURL)
+      } catch (err){
+        console.log("err from useEffect: ", err); 
+      }
+    }
+    wakeUpServer(); 
+  }, []);
 
   return (
     <div>
