@@ -1,0 +1,21 @@
+.outerbox {
+    /* 10vh = 10% of view height */ 
+    width: 20%; 
+    background-color: #052F5F; 
+}
+
+.innerbox {
+    height: 85%; 
+    width: 85%;
+    background-color: #F1A208;
+}
+
+/* responsive design: 
+relative units 
+media queries  */
+
+/* iPhone 12 Pro	2532px x 1170px	 390vh x 844vh */
+/* colors */
+/* #052F5F dark blue */
+/* #005377 light blue */
+/* #F1A208 gold */
