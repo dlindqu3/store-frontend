@@ -10,6 +10,7 @@ function Home() {
       let res;
       try {
         res = await axios.get(baseURL)
+        console.log("res from useEffect: ", res); 
       } catch (err){
         console.log("err from useEffect: ", err); 
       }
