@@ -1,14 +1,4 @@
-## overview 
-- Visitors can create user accounts then browse for various fake products. They can then add products to a cart, proceed to a checkout handled by Stripe, then see records of past orders from their account. The user is advised to use the credit card number "4242 4242 4242 4242" in order to successfully proceed with a fake payment via Stripe. The tech stack includes MongoDB, Express, React, Node, JWT, and React-Bootstrap. 
-
-
-## deployed frontend on Vercel 
-- https://swift-store-frontend-topaz.vercel.app
-
-
-## backend repository on GitHub 
-- https://github.com/dlindqu3/store-backend
-
+** Deployments removed **
 
 ## citations 
 1. "POST Requests with Axios", [link](https://masteringjs.io/tutorials/axios/post)
